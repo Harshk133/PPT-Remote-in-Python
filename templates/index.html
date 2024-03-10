@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Remote!</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <center>
+
+        <img src="{{ url_for('static', filename='left.png') }}" alt="Image" width="200" height="200"
+            onclick="changeSlidePrevious()">
+        <img src="{{ url_for('static', filename='s.png') }}" alt="Image" onclick="start()" width="200" height="200">
+
+        <img src="{{ url_for('static', filename='right.png') }}" alt="Image" width="200" height="200"
+            onclick="changeSlideNext()">
+
+
+        <script>
+            async function changeSlideNext() {
+                let result = await fetch('/change_slide_next', { method: 'POST' });
+                console.log(result);
+            }
+
+            async function changeSlidePrevious() {
+                let result = await fetch('/change_slide_previous', { method: 'POST' });
+                console.log(result);
+            }
+
+            async function start() {
+                let result = await fetch('/start', { method: 'POST' });
+                console.log(result);
+            }
+        </script>
+    </center>
+</body>
+
+</html>
