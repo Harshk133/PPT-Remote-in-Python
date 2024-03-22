@@ -1,10 +1,15 @@
 # Hello world Programmer
 # Harsh Kale!
 from flask import Flask, render_template
+from pyvirtualdisplay import Display
 import pyautogui
 
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
+
+# Create a virtual display
+display = Display(visible=0, size=(800, 600))
+display.start()
 
 @app.route('/')
 def index():
